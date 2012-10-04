@@ -23,3 +23,11 @@ img.boy {
   left: 11px;
   background-image: url("http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png");
 }
+
+footer p {
+  text-align: center;
+}
+
+footer * {
+  font-size: 95%;
+}

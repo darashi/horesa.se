@@ -9,8 +9,26 @@ img.boy {
 
 .boy-thumbnail {
   overflow: hidden;
-  height: 380px;
+  height: 410px;
   padding-top: 24px;
+}
+
+.boy-thumbnail .title {
+  margin: 0;
+  padding: 10px 25px 5px;
+  min-height: 3em;
+}
+
+.boy-thumbnail .metadata {
+  margin: 0;
+  padding: 0 25px 10px;
+  position: relative;
+}
+
+.boy-thumbnail .metadata .character {
+  position: absolute;
+  bottom: 11px;
+  right: 25px;
 }
 
 .navbar-search .search-query {

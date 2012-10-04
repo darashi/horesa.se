@@ -12,11 +12,13 @@
 <script data-template-name="boy" type="text/x-handlebars">
 <div class="thumbnail boy-thumbnail">
 <img class="boy" {{bindAttr src="image"}}>
-<p class="caption">
-<b>{{id}}</b>
-{{title}}
-<span class="label label-info">{{character}}</span>
-</p>
+<div>
+  <p class="title">{{title}}</p>
+  <p class="metadata">
+    <b>惚れさせ{{id}}</b>
+    <span class="label label-info character">{{character}}</span>
+  </p>
+</div>
 </div>
 </script>
 

@@ -82,12 +82,10 @@
     {{#if cidFacet}} of {{character}}{{/if}}
   </div>
   {{else}}
-    {{#if query}}
-      <div class="alert alert-info">
-        <strong>Tip:</strong>
-        Click image to copy to clipboard!
-      </div>
-    {{/if}}
+    <div class="alert alert-info">
+      <strong>Tip:</strong>
+      Click image to copy to clipboard!
+    </div>
     {{view App.MeigensView contentBinding="controller"}}
 
     {{#if isSnipped}}

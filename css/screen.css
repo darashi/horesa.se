@@ -117,3 +117,7 @@ footer p {
 footer * {
   font-size: 95%;
 }
+
+.refresh-button-row {
+  margin-bottom: 30px;
+}

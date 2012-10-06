@@ -68,15 +68,16 @@
   </div>
 </div>
 
-{{view App.MeigensView contentBinding="controller" class="top-meigens"}}
-
-<div class="row">
-  <div class="span2 offset5">
+<div class="row refresh-button-row">
+  <div class="span6 offset3">
     <button {{action refresh}} class="btn btn-large btn-block btn-primary">
       <i class="icon-refresh icon-white"></i> Refresh
     </button>
   </div>
 </div>
+
+{{view App.MeigensView contentBinding="controller" class="top-meigens"}}
+
 </script>
 
 <script data-template-name="search-result" type="text/x-handlebars">

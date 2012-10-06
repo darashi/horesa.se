@@ -18,6 +18,10 @@ body {
   background-position: right -70px;
 }
 
+.hero-unit .social-widgets * {
+  vertical-align: top;
+}
+
 img.meigen {
   width: 240px;
   height: 320px;

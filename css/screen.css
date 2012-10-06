@@ -64,6 +64,10 @@ img.meigen.hover {
   margin-left: 10px;
 }
 
+.top-meigens {
+  min-height: 460px;
+}
+
 footer p {
   text-align: center;
 }

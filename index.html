@@ -43,11 +43,9 @@
     <p class="title">{{title}}</p>
     <p class="metadata">
       <a target="_blank" {{bindAttr href="entryUrl"}}>惚れさせ{{id}}</a>
-      <a href {{action selectCharacter}}>
-        <span class="label label-info character">
-          <i class="icon-user icon-white"></i> {{character}}
-        </span>
-      </a>
+      <span {{action selectCharacter}} class="label label-info character">
+        <i class="icon-user icon-white"></i> {{character}}
+      </span>
     </p>
   </div>
 </div>
@@ -106,7 +104,7 @@
       {{#view App.SearchFormView}}
         {{view Ember.TextField classNames="search-query" valueBinding="query"}}
         <div class="icon-search"></div>
-        <a href {{action resetQuery}}><div class="icon-remove"></div></a>
+        <div class="icon-remove" {{action resetQuery}}></div>
         {{#if cidFacet}}
           <span class="label label-info cid-facet-remove" {{action resetCidFacet}}>
             <i class="icon-user icon-white"></i> {{character}}

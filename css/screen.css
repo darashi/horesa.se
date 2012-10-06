@@ -38,6 +38,7 @@ img.meigen.hover {
   position: absolute;
   bottom: 11px;
   right: 25px;
+  cursor: pointer;
 }
 
 .navbar-search .search-query {
@@ -57,6 +58,7 @@ img.meigen.hover {
   top: 7px;
   left: 240px;
   background-image: url("http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png");
+  cursor: pointer;
 }
 
 .cid-facet-remove {

@@ -21,17 +21,22 @@ body {
 img.meigen {
   width: 240px;
   height: 320px;
-  border: solid 1px #fff;
-}
-
-img.meigen.hover {
-  border: solid 1px #888;
 }
 
 .meigen-thumbnail {
   overflow: hidden;
-  height: 410px;
-  padding-top: 24px;
+  height: 440px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.meigen-thumbnail .clippable-buttons {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.meigen-thumbnail .clippable-buttons button {
+  width: 100px;
 }
 
 .meigen-thumbnail .title {
@@ -84,6 +89,21 @@ img.meigen.hover {
 
 .top-meigens {
   min-height: 460px;
+}
+
+/* Copy .btn:hover in bootstrap.css for buttons used to ZeroClipboard */
+.btn.hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
 }
 
 footer p {

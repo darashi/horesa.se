@@ -38,6 +38,10 @@
 
 <script data-template-name="meigen" type="text/x-handlebars">
 <div class="thumbnail meigen-thumbnail">
+  <div class="clippable-buttons">
+      {{#view App.ClippableButtonView copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}Markdown{{/view}}
+      {{#view App.ClippableButtonView copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}URL{{/view}}
+  </div>
   <img class="meigen" {{bindAttr src="image"}}>
   <div>
     <p class="title">{{title}}</p>
@@ -84,7 +88,7 @@
       <strong>Tip:</strong>
       Click image to copy to clipboard.
     </div>
-    {{view App.MeigensView contentBinding="controller"}}
+    {{view App.MeigensView contentBinding="controller" dataClip="hello"}}
 
     {{#if isSnipped}}
       <div class="alert alert-warning">

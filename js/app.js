@@ -215,11 +215,7 @@ App.notificationController = Ember.ObjectController.create({
   content: null,
 
   flash: function(message) {
-    var self = this;
-    self.set('content', message);
-    setTimeout(function() {
-      self.set('content', null);
-    }, 500);
+    this.set('content', message);
   }
 });
 
@@ -230,8 +226,24 @@ App.NotificationView = Ember.View.extend({
 
   template: Ember.Handlebars.compile(
     '{{#if content}}' +
-    '<span class="label label-important">{{content}}</span>' +
-    '{{/if}}')
+    '{{view view.LabelView contentBinding="this"}}' +
+    '{{/if}}'),
+
+  LabelView: Ember.View.extend({
+    tagName: 'span',
+    classNames: ['label', 'label-important'],
+    content: null,
+    template: Ember.Handlebars.compile("{{content}}"),
+
+    didInsertElement: function(){
+      var self = this;
+      setTimeout(function() {
+        self.$().fadeOut('slow', function() {
+          self.get('parentView').controller.set('content', null);
+        });
+      }, 500);
+    },
+  })
 });
 
 App.clip = new ZeroClipboard.Client();

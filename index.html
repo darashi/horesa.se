@@ -44,13 +44,13 @@
       {{#view App.ClippableButtonView copyTextBinding="markdown" eventSummaryBinding="view.eventSummary"}}Markdown{{/view}}
       {{#view App.ClippableButtonView copyTextBinding="image" eventSummaryBinding="view.eventSummary"}}URL{{/view}}
   </div>
-  <img class="meigen" {{bindAttr src="image"}}>
+  <img class="meigen" {{bindAttr src="view.content.image"}}>
   <div>
-    <p class="title">{{title}}</p>
+    <p class="title">{{view.content.title}}</p>
     <p class="metadata">
-      <a target="_blank" {{bindAttr href="entryUrl"}}>惚れさせ{{id}}</a>
+      <a target="_blank" {{bindAttr href="view.content.entryUrl"}}>惚れさせ{{view.content.id}}</a>
       <span {{action selectCharacter}} class="label label-info character">
-        <i class="icon-user icon-white"></i> {{character}}
+        <i class="icon-user icon-white"></i> {{view.content.character}}
       </span>
     </p>
   </div>
@@ -78,7 +78,7 @@
   </div>
 </div>
 
-{{view App.MeigensView contentBinding="controller" class="top-meigens"}}
+{{collection App.MeigensView contentBinding="controller" class="top-meigens"}}
 
 </script>
 

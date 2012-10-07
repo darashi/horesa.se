@@ -202,16 +202,12 @@ App.ClippableButtonView = Ember.View.extend({
   }
 });
 
-App.MeigensView = Ember.View.extend({
+App.MeigensView = Ember.CollectionView.extend({
   tagName: 'ul',
   classNames: 'thumbnails'.w(),
-  template: Ember.Handlebars.compile('{{#each controller}}' +
-    '{{view view.MeigenView contentBinding="this"}}' +
-    '{{/each}}'),
 
-  MeigenView: Ember.View.extend({
+  itemViewClass: Ember.View.extend({
     templateName: 'meigen',
-    tagName: 'li',
     classNames: 'span4',
     content: null,
 

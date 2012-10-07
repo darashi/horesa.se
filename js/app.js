@@ -162,6 +162,12 @@ App.TopView = Ember.View.extend({
                            $('.hero-unit').removeAttr("style")
                        });
     _gaq.push(['_trackEvent', 'Top', 'Refresh']);
+  },
+  didInsertElement: function() {
+    if (window.FB) {
+      window.FB.XFBML.parse();
+    }
+    twttr.widgets.load();
   }
 });
 

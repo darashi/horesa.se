@@ -115,7 +115,14 @@ App.searchController = Ember.ArrayController.create({
   isSearchWorking: function() {
     var query = this.get('query') || '';
     return !!((query !== '') || this.get('cidFacet'));
-  }.property('query', 'cidFacet')
+  }.property('query', 'cidFacet'),
+  resetQuery: function() {
+    this.set('query', null);
+  },
+  resetCidFacet: function() {
+    this.set('cidFacet', null);
+    this.set('character', null);
+  }
 });
 
 App.SearchFormView = Ember.View.extend({
@@ -124,13 +131,6 @@ App.SearchFormView = Ember.View.extend({
   classNames: ['navbar-search', 'pull-left'],
   submit: function(event) {
     event.preventDefault();
-  },
-  resetQuery: function() {
-    this.get('controller').set('query', null);
-  },
-  resetCidFacet: function() {
-    this.get('controller').set('cidFacet', null);
-    this.get('controller').set('character', null);
   }
 });
 
@@ -210,14 +210,7 @@ App.MeigensView = Ember.CollectionView.extend({
     eventSummary: function() {
       var content = this.get('content');
       return '' + content.get('id') + ' ' + content.get('title');
-    }.property('id', 'title'),
-    selectCharacter: function() {
-      var character = this.get('content').get('character');
-      var cid = this.get('content').get('cid');
-      App.searchController.set('cidFacet', cid);
-      App.searchController.set('character', character);
-      _gaq.push(['_trackEvent', 'Character', 'Facet', '' + cid + ' ' + character]);
-    }
+    }.property('id', 'title')
   })
 });
 
@@ -276,10 +269,47 @@ App.HomeView = Ember.View.extend({
 
 App.Router = Ember.Router.extend({
   root: Ember.Route.extend({
+    goHome:    Ember.Route.transitionTo('home'),
+    selectBoy: Ember.Route.transitionTo('boy'),
+
     home: Ember.Route.extend({
       route: '/',
+
       connectOutlets: function(router) {
         router.get('applicationController').connectOutlet('home');
+      }
+    }),
+
+    boy: Ember.Route.extend({
+      route: '/boy/:cid',
+
+      serialize: function(router, meigen) {
+        return meigen.getProperties('cid');
+      },
+
+      deserialize: function(router, params) {
+        return App.Meigen.data.findProperty('cid', Number(params.cid));
+      },
+
+      exit: function() {
+        App.searchController.setProperties({
+          cidFacet:  null,
+          character: null
+        });
+      },
+
+      connectOutlets: function(router, meigen) {
+        var cid       = meigen.get('cid'),
+            character = meigen.get('character');
+
+        App.searchController.setProperties({
+          cidFacet:  cid,
+          character: character
+        });
+
+        router.get('applicationController').connectOutlet('home');
+
+        _gaq.push(['_trackEvent', 'Character', 'Facet', '' + cid + ' ' + character]);
       }
     })
   })
